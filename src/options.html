@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus for YouTube settings</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="options">
+    <h1>Focus for YouTube</h1>
+
+    <section>
+      <h2>Schedule</h2>
+      <label class="row"><input type="checkbox" id="schedule-enabled" /> Only during these hours</label>
+      <div id="days" class="days" aria-label="Days"></div>
+      <div class="row">
+        <label>From <input type="time" id="start" /></label>
+        <label>to <input type="time" id="end" /></label>
+      </div>
+      <p class="hint">An end time before the start runs past midnight. When the schedule is off, focus mode is always on.</p>
+    </section>
+
+    <section>
+      <h2>Breaks</h2>
+      <label class="row">Break length <input type="number" id="break-minutes" min="1" max="120" /> minutes</label>
+    </section>
+
+    <p id="saved" class="status" role="status"></p>
+
+    <script src="options.js"></script>
+  </body>
+</html>

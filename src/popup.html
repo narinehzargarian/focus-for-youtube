@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus for YouTube</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="popup">
+    <header>
+      <h1>Focus for YouTube</h1>
+      <label class="switch">
+        <input type="checkbox" id="enabled" />
+        <span>On</span>
+      </label>
+    </header>
+
+    <p id="status" class="status" role="status"></p>
+
+    <button type="button" id="break" class="primary"></button>
+
+    <fieldset>
+      <legend>Hide</legend>
+      <div id="features"></div>
+    </fieldset>
+
+    <a href="options.html" target="_blank" id="options-link">Schedule and settings</a>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

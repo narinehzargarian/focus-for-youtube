@@ -1,0 +1,54 @@
+/*
+ * Each rule only applies while the content script sets its attribute on <html>, so turning a
+ * feature off, or taking a break, shows everything again without reloading.
+ *
+ * YouTube changes its page structure from time to time. When something reappears, this is the
+ * file to fix; the live test (npm run test:live) checks these selectors against youtube.com.
+ */
+
+/* Home page recommendations */
+html[data-ytf-home] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
+html[data-ytf-home] ytd-browse[page-subtype="home"] #chips-wrapper {
+  display: none !important;
+}
+
+html[data-ytf-home] ytd-browse[page-subtype="home"]::before {
+  content: "Focus mode is on. Search for what you came to watch.";
+  display: block;
+  margin: 120px auto 0;
+  max-width: 520px;
+  padding: 0 16px;
+  text-align: center;
+  font: 500 18px/1.5 Roboto, Arial, sans-serif;
+  color: var(--yt-spec-text-secondary, #606060);
+}
+
+/* Related videos next to and below the player */
+html[data-ytf-related] ytd-watch-flexy #related,
+html[data-ytf-related] ytd-watch-next-secondary-results-renderer {
+  display: none !important;
+}
+
+/* Shorts shelves, sidebar links, and Shorts in search results */
+html[data-ytf-shorts] ytd-reel-shelf-renderer,
+html[data-ytf-shorts] ytd-rich-shelf-renderer[is-shorts],
+html[data-ytf-shorts] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html[data-ytf-shorts] grid-shelf-view-model:has(a[href^="/shorts/"]),
+html[data-ytf-shorts] ytd-video-renderer:has(a[href^="/shorts/"]),
+html[data-ytf-shorts] ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html[data-ytf-shorts] ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
+  display: none !important;
+}
+
+/* Comments */
+html[data-ytf-comments] ytd-comments#comments {
+  display: none !important;
+}
+
+/* Suggestions on and after the end of a video */
+html[data-ytf-endscreen] .ytp-ce-element,
+html[data-ytf-endscreen] .ytp-endscreen-content,
+html[data-ytf-endscreen] .videowall-endscreen,
+html[data-ytf-endscreen] .ytp-fullscreen-grid {
+  display: none !important;
+}

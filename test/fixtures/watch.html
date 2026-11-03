@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- A trimmed copy of the structure of a youtube.com watch page. -->
+<html>
+  <body>
+    <ytd-watch-flexy>
+      <div id="player">
+        <button class="ytp-button" aria-label="Autoplay is on"><div class="ytp-autonav-toggle-button" aria-checked="true" id="autoplay"></div></button>
+        <div class="ytp-ce-element" id="card">Watch next</div>
+        <div class="ytp-endscreen-content" id="endscreen">Suggested videos</div>
+        <div class="ytp-autonav-endscreen-countdown-overlay" id="countdown" hidden>
+          Up next in 8 <button class="ytp-autonav-endscreen-upnext-cancel-button" id="cancel">Cancel</button>
+        </div>
+      </div>
+      <div id="title">The video you came for</div>
+      <ytd-comments id="comments">Comments</ytd-comments>
+      <div id="related">
+        <ytd-watch-next-secondary-results-renderer>Up next</ytd-watch-next-secondary-results-renderer>
+      </div>
+    </ytd-watch-flexy>
+    <script>
+      // Like YouTube's button, a click flips the setting.
+      const toggle = document.getElementById("autoplay");
+      const button = toggle.closest("button");
+      button.addEventListener("click", () => {
+        const on = toggle.getAttribute("aria-checked") !== "true";
+        toggle.setAttribute("aria-checked", String(on));
+        button.setAttribute("aria-label", on ? "Autoplay is on" : "Autoplay is off");
+      });
+      // Like YouTube, Cancel closes the countdown.
+      document.getElementById("cancel").addEventListener("click", () => (document.getElementById("countdown").hidden = true));
+    </script>
+  </body>
+</html>
