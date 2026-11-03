@@ -35,8 +35,11 @@ html[data-ytf-shorts] ytd-rich-shelf-renderer[is-shorts],
 html[data-ytf-shorts] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
 html[data-ytf-shorts] grid-shelf-view-model:has(a[href^="/shorts/"]),
 html[data-ytf-shorts] ytd-video-renderer:has(a[href^="/shorts/"]),
+/* Sidebar entries: the wide sidebar's link has only a title, the narrow one's has an address. */
 html[data-ytf-shorts] ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html[data-ytf-shorts] ytd-guide-entry-renderer:has(a[title="Shorts"]),
 html[data-ytf-shorts] ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html[data-ytf-shorts] ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
 html[data-ytf-shorts] ytd-pivot-bar-item-renderer:has(a[href^="/shorts"]) {
   display: none !important;
 }

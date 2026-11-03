@@ -24,6 +24,14 @@ test("home page recommendations are hidden on youtube.com", async ({ context, wo
     () => [...document.querySelectorAll<HTMLElement>('a[href^="/shorts"]')].filter((a) => a.offsetParent !== null).length,
   );
   expect(visibleShortsLinks).toBe(0);
+  // The wide sidebar, whose Shorts link has no address, only a title.
+  const visibleShortsEntries = await page.evaluate(
+    () =>
+      [...document.querySelectorAll<HTMLElement>("ytd-guide-entry-renderer, ytd-mini-guide-entry-renderer")].filter(
+        (entry) => entry.textContent?.trim() === "Shorts" && getComputedStyle(entry).display !== "none",
+      ).length,
+  );
+  expect(visibleShortsEntries).toBe(0);
 });
 
 test("related videos are hidden next to a real video", async ({ context, worker }) => {

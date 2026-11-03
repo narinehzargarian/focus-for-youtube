@@ -3,7 +3,8 @@
 <html>
   <body>
     <ytd-guide-entry-renderer id="guide-home"><a title="Home" href="/">Home</a></ytd-guide-entry-renderer>
-    <ytd-guide-entry-renderer id="guide-shorts"><a title="Shorts" href="/shorts/">Shorts</a></ytd-guide-entry-renderer>
+    <!-- The wide sidebar: the Shorts link has a title but no address. -->
+    <ytd-guide-entry-renderer id="guide-shorts"><a id="endpoint" title="Shorts">Shorts</a></ytd-guide-entry-renderer>
     <!-- The narrow sidebar: the label is on the link, not on the entry. -->
     <ytd-mini-guide-entry-renderer id="mini-home"><a id="endpoint" aria-label="Home" title="Home" href="/">Home</a></ytd-mini-guide-entry-renderer>
     <ytd-mini-guide-entry-renderer id="mini-shorts"><a id="endpoint" aria-label="Shorts" title="Shorts" href="/shorts/">Shorts</a></ytd-mini-guide-entry-renderer>

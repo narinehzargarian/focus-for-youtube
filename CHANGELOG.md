@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 (2026-11-02)
+
+- Fixed: the Shorts entry in the wide sidebar showed again in 0.1.2. Its link has a title but no address, so both are now matched.
+
 ## 0.1.2 (2026-11-02)
 
 - The Shorts button in the narrow sidebar is now hidden. YouTube had moved its label onto the link inside it.
