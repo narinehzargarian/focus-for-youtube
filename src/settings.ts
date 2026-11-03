@@ -6,7 +6,7 @@ export const FEATURE_LABELS: Record<Feature, string> = {
   home: "Home page recommendations",
   related: "Related videos next to the player",
   shorts: "Shorts",
-  comments: "Comments",
+  comments: "Comments and live chat",
   endscreen: "Suggestions when a video ends",
   autoplay: "Autoplay of the next video",
 };
@@ -87,6 +87,12 @@ export function isFocusActive(settings: Settings, now: Date): boolean {
 /** The ID from a Shorts link, so it can open in the normal player instead. */
 export function shortsVideoId(pathname: string): string | undefined {
   const match = /^\/shorts\/([A-Za-z0-9_-]{6,20})/.exec(pathname);
+  return match?.[1];
+}
+
+/** For a channel's Shorts tab, such as /@CNN/shorts, the channel's own address. */
+export function channelShortsTab(pathname: string): string | undefined {
+  const match = /^(\/(?:@[^/]+|channel\/[^/]+|c\/[^/]+|user\/[^/]+))\/shorts\/?$/.exec(pathname);
   return match?.[1];
 }
 

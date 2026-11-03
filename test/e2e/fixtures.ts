@@ -10,7 +10,8 @@ const fixture = (name: string) => readFileSync(fileURLToPath(new URL(`../fixture
 async function serveFixtures(context: BrowserContext): Promise<void> {
   await context.route("https://www.youtube.com/**", (route) => {
     const url = new URL(route.request().url());
-    const page = url.pathname === "/" ? "home" : url.pathname === "/results" ? "results" : "watch";
+    const page =
+      url.pathname === "/" ? "home" : url.pathname === "/results" ? "results" : url.pathname.startsWith("/@") ? "channel" : "watch";
     return route.fulfill({ contentType: "text/html", body: fixture(page) });
   });
 }

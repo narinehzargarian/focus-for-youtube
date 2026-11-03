@@ -34,6 +34,15 @@ test("home page recommendations are hidden on youtube.com", async ({ context, wo
   expect(visibleShortsEntries).toBe(0);
 });
 
+test("a real channel page hides its Shorts tab", async ({ context, worker }) => {
+  void worker;
+  const page = await context.newPage();
+  await page.goto("https://www.youtube.com/@CNN");
+  await page.waitForSelector('yt-tab-shape[tab-title="Videos"]', { state: "visible" });
+  await expect(page.locator('yt-tab-shape[tab-title="Videos"]')).toBeVisible();
+  await expect(page.locator('yt-tab-shape[tab-title="Shorts"]')).toBeHidden();
+});
+
 test("related videos are hidden next to a real video", async ({ context, worker }) => {
   void worker;
   const page = await context.newPage();

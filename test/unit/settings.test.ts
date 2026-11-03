@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { breakRemaining, DEFAULT_SETTINGS, isFocusActive, normalize, parseTime, shortsVideoId, type Settings } from "../../src/settings";
+import { breakRemaining, channelShortsTab, DEFAULT_SETTINGS, isFocusActive, normalize, parseTime, shortsVideoId, type Settings } from "../../src/settings";
 
 // Local time: 2026-03-02 is a Monday.
 const monday = (hour: number, minute = 0) => new Date(2026, 2, 2, hour, minute);
@@ -72,6 +72,14 @@ describe("helpers", () => {
     expect(shortsVideoId("/watch")).toBeUndefined();
     expect(shortsVideoId("/shorts/")).toBeUndefined();
     expect(shortsVideoId("/shorts/<script>")).toBeUndefined();
+  });
+
+  it("finds a channel's Shorts tab", () => {
+    expect(channelShortsTab("/@CNN/shorts")).toBe("/@CNN");
+    expect(channelShortsTab("/channel/UC123/shorts/")).toBe("/channel/UC123");
+    expect(channelShortsTab("/@CNN/videos")).toBeUndefined();
+    expect(channelShortsTab("/@CNN")).toBeUndefined();
+    expect(channelShortsTab("/shorts/abc")).toBeUndefined();
   });
 
   it("formats the time left on a break", () => {

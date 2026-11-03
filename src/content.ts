@@ -1,4 +1,4 @@
-import { FEATURES, isFocusActive, normalize, shortsVideoId, type Settings } from "./settings";
+import { channelShortsTab, FEATURES, isFocusActive, normalize, shortsVideoId, type Settings } from "./settings";
 
 /*
  * Runs on every youtube.com page, before it draws. Hiding is done in content.css, and autoplay
@@ -25,6 +25,12 @@ function apply(): void {
 function redirectShorts(): void {
   if (/^\/shorts\/?$/.test(location.pathname)) {
     location.replace("/");
+    return;
+  }
+  // A channel's Shorts tab, such as /@CNN/shorts, goes to the channel's home page.
+  const channel = channelShortsTab(location.pathname);
+  if (channel) {
+    location.replace(channel);
     return;
   }
   const id = shortsVideoId(location.pathname);

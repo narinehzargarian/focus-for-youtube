@@ -40,15 +40,22 @@ html[data-ytf-shorts] ytd-guide-entry-renderer:has(a[href^="/shorts"]),
 html[data-ytf-shorts] ytd-guide-entry-renderer:has(a[title="Shorts"]),
 html[data-ytf-shorts] ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
 html[data-ytf-shorts] ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-html[data-ytf-shorts] ytd-pivot-bar-item-renderer:has(a[href^="/shorts"]) {
+html[data-ytf-shorts] ytd-pivot-bar-item-renderer:has(a[href^="/shorts"]),
+/* The Shorts tab on channel pages */
+html[data-ytf-shorts] yt-tab-shape[tab-title="Shorts"] {
   display: none !important;
 }
 
-/* Comments */
-/* Comments, both below the video and in the side panel some YouTube layouts use instead */
+/*
+ * Comments, both below the video and in the side panel some YouTube layouts use instead,
+ * plus live chat on live streams and the "Live chat" card under the video.
+ */
 html[data-ytf-comments] ytd-comments,
 html[data-ytf-comments] ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-comments-section"],
-html[data-ytf-comments] ytd-engagement-panel-section-list-renderer:has(ytd-comments) {
+html[data-ytf-comments] ytd-engagement-panel-section-list-renderer:has(ytd-comments),
+html[data-ytf-comments] ytd-live-chat-frame,
+html[data-ytf-comments] ytd-watch-flexy #chat-container,
+html[data-ytf-comments] ytd-watch-flexy #teaser-carousel {
   display: none !important;
 }
 

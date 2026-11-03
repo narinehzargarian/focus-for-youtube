@@ -20,6 +20,11 @@
       <ytd-engagement-panel-section-list-renderer target-id="engagement-panel-comments-section" id="comments-panel">
         <ytd-comments>Comments 10M</ytd-comments>
       </ytd-engagement-panel-section-list-renderer>
+      <!-- Live streams: the chat panel, and a "Live chat" card under the video. -->
+      <div id="chat-container"><ytd-live-chat-frame id="chat">Top chat</ytd-live-chat-frame></div>
+      <div id="teaser-carousel">
+        <yt-video-metadata-carousel-view-model aria-label="Live chat">Live chat. Join the conversation.</yt-video-metadata-carousel-view-model>
+      </div>
     </ytd-watch-flexy>
     <script>
       // Like YouTube's button, a click flips the setting.

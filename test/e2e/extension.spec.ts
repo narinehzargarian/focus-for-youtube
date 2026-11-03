@@ -109,9 +109,27 @@ test("the popup toggles single features", async ({ context, extensionId }) => {
   const popup = await context.newPage();
   await popup.goto(`chrome-extension://${extensionId}/popup.html`);
   await popup.getByLabel("Comments").check();
-  // Both below the video and in the side panel.
+  // Below the video, in the side panel, and live chat.
   await expect(page.locator("#comments")).toBeHidden();
   await expect(page.locator("#comments-panel")).toBeHidden();
+  await expect(page.locator("#chat")).toBeHidden();
+  await expect(page.locator("#teaser-carousel")).toBeHidden();
+});
+
+test("hides the Shorts tab on channel pages and keeps the others", async ({ context, worker }) => {
+  void worker;
+  const page = await context.newPage();
+  await page.goto("https://www.youtube.com/@SomeChannel");
+  await expect(page.locator("#tab-shorts")).toBeHidden();
+  await expect(page.locator("#tab-videos")).toBeVisible();
+  await expect(page.locator("#tab-live")).toBeVisible();
+});
+
+test("a channel's Shorts page goes to the channel's home page", async ({ context, worker }) => {
+  void worker;
+  const page = await context.newPage();
+  await page.goto("https://www.youtube.com/@SomeChannel/shorts");
+  await expect(page).toHaveURL("https://www.youtube.com/@SomeChannel");
 });
 
 test("the options page saves a schedule", async ({ context, extensionId, worker }) => {

@@ -7,9 +7,9 @@ A free, open-source Chrome extension that hides the parts of YouTube built to ke
 
 | Hidden by default | Can also hide |
 | --- | --- |
-| Home page recommendations | Comments |
+| Home page recommendations | Comments and live chat |
 | Related videos next to the player | |
-| Shorts (and Shorts links open in the normal player) | |
+| Shorts, including channel Shorts tabs (Shorts links open in the normal player) | |
 | Suggestions when a video ends | |
 | Autoplay of the next video | |
 
