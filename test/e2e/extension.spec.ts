@@ -74,6 +74,28 @@ test("settings changes apply to an open page without reloading", async ({ contex
   await expect(page.locator("#comments")).toBeVisible();
 });
 
+test("asks YouTube to lay out the page again after a change, and only then", async ({ context, setSettings }) => {
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    const w = window as unknown as { resizes: number };
+    w.resizes = 0;
+    window.addEventListener("resize", () => w.resizes++);
+  });
+  await page.goto("https://www.youtube.com/");
+  await expect(page.locator("#grid")).toBeHidden();
+  const resizes = () => page.evaluate(() => (window as unknown as { resizes: number }).resizes);
+  const before = await resizes();
+
+  await setSettings({ enabled: false });
+  await expect(page.locator("#grid")).toBeVisible();
+  await expect.poll(resizes).toBe(before + 1);
+
+  // Saving the same settings again changes nothing on the page, so no extra layout pass.
+  await setSettings({ enabled: false });
+  await page.waitForTimeout(500);
+  expect(await resizes()).toBe(before + 1);
+});
+
 test("shows everything outside the scheduled hours", async ({ context, setSettings }) => {
   const now = new Date();
   // A one-minute window on a different day than today.

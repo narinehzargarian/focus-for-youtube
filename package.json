@@ -1,6 +1,6 @@
 {
   "name": "focus-for-youtube",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "A Chrome extension that hides YouTube's recommendations, Shorts, comments, and autoplay, so you watch what you came for.",
   "license": "MIT",

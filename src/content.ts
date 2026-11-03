@@ -12,8 +12,18 @@ function apply(): void {
   if (!settings) return;
   const active = isFocusActive(settings, new Date());
   const root = document.documentElement;
+  let changed = false;
   for (const feature of FEATURES) {
-    root.toggleAttribute(`data-ytf-${feature}`, active && settings.hide[feature]);
+    const name = `data-ytf-${feature}`;
+    const hide = active && settings.hide[feature];
+    if (root.hasAttribute(name) !== hide) changed = true;
+    root.toggleAttribute(name, hide);
+  }
+  // YouTube positions some parts, like the bar above the home feed, when the page loads.
+  // After showing or hiding things on an open page, a resize event makes it lay them out
+  // again, the same as resizing the window. Without it, that bar could cover the feed.
+  if (changed && document.readyState !== "loading") {
+    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
   }
   if (active && settings.hide.shorts) redirectShorts();
 }

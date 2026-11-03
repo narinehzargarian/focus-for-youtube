@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 (2026-11-02)
+
+- Fixed: after changing a setting on an open page, the bar above the home feed could cover the top of the page until a refresh. YouTube now lays the page out again after each change.
+
 ## 0.1.4 (2026-11-02)
 
 - Shorts: the Shorts tab on channel pages is hidden, and a channel's Shorts page goes to the channel's home page.
