@@ -41,7 +41,10 @@ html[data-ytf-shorts] ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
 }
 
 /* Comments */
-html[data-ytf-comments] ytd-comments#comments {
+/* Comments, both below the video and in the side panel some YouTube layouts use instead */
+html[data-ytf-comments] ytd-comments,
+html[data-ytf-comments] ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-comments-section"],
+html[data-ytf-comments] ytd-engagement-panel-section-list-renderer:has(ytd-comments) {
   display: none !important;
 }
 

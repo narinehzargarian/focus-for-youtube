@@ -95,11 +95,14 @@ test("the popup toggles single features", async ({ context, extensionId }) => {
   const page = await context.newPage();
   await page.goto("https://www.youtube.com/watch?v=aaaaaaaaaaa");
   await expect(page.locator("#comments")).toBeVisible();
+  await expect(page.locator("#comments-panel")).toBeVisible();
 
   const popup = await context.newPage();
   await popup.goto(`chrome-extension://${extensionId}/popup.html`);
   await popup.getByLabel("Comments").check();
+  // Both below the video and in the side panel.
   await expect(page.locator("#comments")).toBeHidden();
+  await expect(page.locator("#comments-panel")).toBeHidden();
 });
 
 test("the options page saves a schedule", async ({ context, extensionId, worker }) => {

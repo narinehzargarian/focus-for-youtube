@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2026-11-02)
+
+- Comments are now also hidden in the side panel some YouTube layouts show next to the video.
+
 ## 0.1.0 (2026-11-02)
 
 First release.
