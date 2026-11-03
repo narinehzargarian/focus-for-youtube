@@ -18,8 +18,15 @@ function apply(): void {
   if (active && settings.hide.shorts) redirectShorts();
 }
 
-/** Opens a Shorts link in the normal player, where the Shorts feed can't take over. */
+/**
+ * Opens a link to a specific Short in the normal player, where the Shorts feed can't take over.
+ * The Shorts tab itself (/shorts with no video) goes to the home page instead of a random Short.
+ */
 function redirectShorts(): void {
+  if (/^\/shorts\/?$/.test(location.pathname)) {
+    location.replace("/");
+    return;
+  }
   const id = shortsVideoId(location.pathname);
   if (id) location.replace(`/watch?v=${encodeURIComponent(id)}`);
 }

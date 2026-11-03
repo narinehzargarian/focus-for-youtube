@@ -19,6 +19,11 @@ test("home page recommendations are hidden on youtube.com", async ({ context, wo
   const grid = page.locator('ytd-browse[page-subtype="home"] ytd-rich-grid-renderer');
   if (await grid.count()) await expect(grid.first()).toBeHidden();
   await expect(page.locator("html")).toHaveAttribute("data-ytf-home", "");
+  // No way into Shorts from the sidebar.
+  const visibleShortsLinks = await page.evaluate(
+    () => [...document.querySelectorAll<HTMLElement>('a[href^="/shorts"]')].filter((a) => a.offsetParent !== null).length,
+  );
+  expect(visibleShortsLinks).toBe(0);
 });
 
 test("related videos are hidden next to a real video", async ({ context, worker }) => {

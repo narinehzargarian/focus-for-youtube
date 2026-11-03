@@ -3,6 +3,13 @@ import { expect, test } from "./fixtures";
 
 test.skip(!!process.env.LIVE, "fixture tests don't run in live mode");
 
+test("the Shorts tab goes to the home page instead of a random Short", async ({ context, worker }) => {
+  void worker;
+  const page = await context.newPage();
+  await page.goto("https://www.youtube.com/shorts/");
+  await expect(page).toHaveURL("https://www.youtube.com/");
+});
+
 test("hides home recommendations and Shorts, and shows a message instead", async ({ context, worker }) => {
   void worker;  // Waits for the extension to install and save its defaults.
   const page = await context.newPage();
@@ -11,6 +18,8 @@ test("hides home recommendations and Shorts, and shows a message instead", async
   await expect(page.locator("#chips-wrapper")).toBeHidden();
   await expect(page.locator("#guide-shorts")).toBeHidden();
   await expect(page.locator("#guide-home")).toBeVisible();
+  await expect(page.locator("#mini-shorts")).toBeHidden();
+  await expect(page.locator("#mini-home")).toBeVisible();
   const message = await page.locator("ytd-browse").evaluate((el) => getComputedStyle(el, "::before").content);
   expect(message).toContain("Focus mode is on");
 });

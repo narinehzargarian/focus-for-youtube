@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 (2026-11-02)
+
+- The Shorts button in the narrow sidebar is now hidden. YouTube had moved its label onto the link inside it.
+- Opening the Shorts tab (youtube.com/shorts) goes to the home page instead of playing a random Short.
+
 ## 0.1.1 (2026-11-02)
 
 - Comments are now also hidden in the side panel some YouTube layouts show next to the video.
