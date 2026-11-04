@@ -2,6 +2,9 @@
 
 [![CI](https://github.com/narinehzargarian/focus-for-youtube/actions/workflows/ci.yml/badge.svg)](https://github.com/narinehzargarian/focus-for-youtube/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/njkoncfkhljmhjfpimpogbbhodmmegbj?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/focus-for-youtube/njkoncfkhljmhjfpimpogbbhodmmegbj)
+
+**[Add to Chrome](https://chromewebstore.google.com/detail/focus-for-youtube/njkoncfkhljmhjfpimpogbbhodmmegbj)**
 
 A free, open-source Chrome extension that hides the parts of YouTube built to keep you watching, so you can watch what you came for and leave.
 
@@ -26,6 +29,10 @@ Search, your subscriptions, playlists, and the video itself all work as usual.
 </p>
 
 ## Install
+
+### From the Chrome Web Store
+
+Open [Focus for YouTube on the Chrome Web Store](https://chromewebstore.google.com/detail/focus-for-youtube/njkoncfkhljmhjfpimpogbbhodmmegbj) and click **Add to Chrome**. Updates install automatically.
 
 ### From GitHub
 
